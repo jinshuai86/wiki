@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/tango.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>Linux Command - Wiki | jinshuai86</title>
+    <meta name="keywords" content="Java,Operation System,Network,Tool"/>
+    <meta name="description" content="jinshuai's personal wiki"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+
+  <body>
+    <div id="container">
+      
+<div id="header">
+  <div class="post-nav"><a href="/wiki/">Home</a>&nbsp;&#187;&nbsp;<a href="/wiki/#Linux">Linux</a>&nbsp;&#187;&nbsp;Linux Command
+    <span class="updated">Page Updated&nbsp;
+      2019-04-05
+    </span></div>
+</div>
+<div class="clearfix"></div>
+
+<div class="page_title">Linux Command</div>
+
+  <h1 id="_1">文件处理</h1>
+<h2 id="find">find</h2>
+<p>用于查找文件，比如 find / -name *.java 查找根目录下的所有java文件</p>
+<h3 id="_2">常用参数</h3>
+<h4 id="-name">-name 按名称查找</h4>
+<p><code>find /home/js/ -name test.jmx</code> 查找/home/js/目录下的test.jmx文件</p>
+<h4 id="-type-ffileddirectoryllink">-type 按类型查找(f(file)、d(directory)、l(link))</h4>
+<p><code>find /home/js/ -type d</code> 查找/home/js/目录下的类型是<strong>目录</strong>的文件</p>
+<h4 id="-atimemtime">-atime/mtime 按访问时间/修改时间查找</h4>
+<p><code>find /home/js -atime -7</code> 查找/home/js/目录下访问时间在7天以内的文件</p>
+<h4 id="-size-kkbmmbggb">-size 按大小查找(k(KB)、m(MB)、g(GB))</h4>
+<p><code>find /home/js -size -1k</code> 查找/home/js/目录下大小小于1KB的文件</p>
+<h4 id="-perm-4r2w1x">-perm 按权限查找(4(r)、2(w)、1(x))</h4>
+<p><code>find /home/js -perm 444</code> 查找/home/js/目录下只读的文件</p>
+    </div>
+    <div id="footer">
+      <span>
+        <p>Copyright © 2019 JinShuai.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
+        <p>Site Generated 2019-04-06 08:40:08</p>
+      </span>
+    </div>
+
+    
+    
+  </body>
+</html>
