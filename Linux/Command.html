@@ -51,9 +51,19 @@
 <code>find /home/js -perm 444</code> 查找/home/js/目录下只读的文件</p>
 </li>
 </ul>
+<h2 id="grep">grep</h2>
+<p>查找文件中包含的关键字，最终显示的是包含关键字的所有行，比如 grep "find" Command.md 在Command.md中查找包含"find"关键字的行</p>
+<h3 id="_3">常用参数</h3>
+<ul>
+<li>-e 多个模式匹配<br />
+<code>grep -e "find" -e "test" Command.md</code> 在Command.md中查找包含"find"和"test"关键字的行</li>
+<li>-i 忽略大小写</li>
+<li>-c(count) 打印包含的关键字的数量</li>
+<li>-n 显示关键字所在的行号</li>
+</ul>
 <h2 id="sort">sort</h2>
 <p>对文件中的内容进行排序，排序在内存中进行，不会修改源文件。 比如 sort /home/test 默认是按字典序排序(-d)</p>
-<h3 id="_3">常用参数</h3>
+<h3 id="_4">常用参数</h3>
 <ul>
 <li>
 <p>-n 按数字排序(前提是test里的文本是数字，且要排序的多个数字不能在同一行)<br />
@@ -77,7 +87,7 @@
       <span>
         <p>Copyright © 2019 JinShuai.
         Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
-        <p>Site Generated 2019-04-07 10:01:01</p>
+        <p>Site Generated 2019-04-07 12:29:17</p>
       </span>
     </div>
 
