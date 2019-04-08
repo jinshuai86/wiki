@@ -82,12 +82,25 @@
 <code>sort -r -k 1 /home/js/test</code> 对test里的每行按第 1 列逆序排序</p>
 </li>
 </ul>
+<h2 id="trtransfer">tr(transfer)</h2>
+<p>转换文本中的内容，转换在内存中进行，不会修改源文件。 需要将其它程序的输出作为输入进行处理。 less test.md | tr a b &gt; out.md 将less获取的输出作为输入，然后将其中的a转换成b输出到out.md中。</p>
+<h3 id="_5">常用参数</h3>
+<ul>
+<li>
+<p>-s 将<strong>连续的</strong>字符或者字符串转换成指定字符或者字符串<br />
+<code>less test.md | tr -s 'ab' 'b'</code> 将test.md中连续的ab替换成b的内容作为输出</p>
+</li>
+<li>
+<p>-d 删除字符<br />
+<code>less test.md | tr -d a</code> 删除test.md中出现的a字符的内容作为输出</p>
+</li>
+</ul>
     </div>
     <div id="footer">
       <span>
         <p>Copyright © 2019 JinShuai.
         Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
-        <p>Site Generated 2019-04-07 12:29:17</p>
+        <p>Site Generated 2019-04-08 09:08:22</p>
       </span>
     </div>
 
