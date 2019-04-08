@@ -45,3 +45,13 @@ date: 2019-04-05
 
 - \-r 和其它参数组合实现逆序排序
 `sort -r -k 1 /home/js/test` 对test里的每行按第 1 列逆序排序
+
+## tr(transfer)
+转换文本中的内容，转换在内存中进行，不会修改源文件。 需要将其它程序的输出作为输入进行处理。 less test.md | tr a b > out.md 将less获取的输出作为输入，然后将其中的a转换成b输出到out.md中。
+
+### 常用参数
+- \-s 将**连续的**字符或者字符串转换成指定字符或者字符串
+`less test.md | tr -s 'ab' 'b'` 将test.md中连续的ab替换成b的内容作为输出
+
+- \-d 删除字符
+`less test.md | tr -d a` 删除test.md中出现的a字符的内容作为输出
