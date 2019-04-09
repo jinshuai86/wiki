@@ -27,12 +27,12 @@
 
   <h1 id="_1">文件处理</h1>
 <h2 id="find">find</h2>
-<p>用于查找文件，比如 find / -name *.java 查找根目录下的所有java文件</p>
-<h3 id="_2">常用参数</h3>
+<p>用于查找文件，比如 <code>find / -name *.java</code> 查找根目录下的所有java文件</p>
+<h3 id="_2">参数</h3>
 <ul>
 <li>
 <p>-name 按名称查找<br />
-<code>find /home/js/ -name test.jmx</code> 查找/home/js/目录下的test.jmx文件</p>
+<code>find /home/js/ -name test</code> 查找/home/js/目录下的test文件</p>
 </li>
 <li>
 <p>-type 按类型查找(f(file)、d(directory)、l(link))<br />
@@ -52,8 +52,8 @@
 </li>
 </ul>
 <h2 id="grep">grep</h2>
-<p>查找文件中包含的关键字，最终显示的是包含关键字的所有行，比如 grep "find" Command.md 在Command.md中查找包含"find"关键字的行</p>
-<h3 id="_3">常用参数</h3>
+<p>查找文件中包含的关键字，最终显示的是包含关键字的所有行，比如 <code>grep "find" Command.md</code> 在Command.md中查找包含"find"关键字的行</p>
+<h3 id="_3">参数</h3>
 <ul>
 <li>-e 多个模式匹配<br />
 <code>grep -e "find" -e "test" Command.md</code> 在Command.md中查找包含"find"和"test"关键字的行</li>
@@ -62,8 +62,8 @@
 <li>-n 显示关键字所在的行号</li>
 </ul>
 <h2 id="sort">sort</h2>
-<p>对文件中的内容进行排序，排序在内存中进行，不会修改源文件。 比如 sort /home/test 默认是按字典序排序(-d)</p>
-<h3 id="_4">常用参数</h3>
+<p>对文件中的内容进行排序，排序在内存中进行，不会修改源文件。 比如 <code>sort /home/test</code> 默认是按字典序排序(-d)</p>
+<h3 id="_4">参数</h3>
 <ul>
 <li>
 <p>-n 按数字排序(前提是test里的文本是数字，且要排序的多个数字不能在同一行)<br />
@@ -83,24 +83,55 @@
 </li>
 </ul>
 <h2 id="trtransfer">tr(transfer)</h2>
-<p>转换文本中的内容，转换在内存中进行，不会修改源文件。 需要将其它程序的输出作为输入进行处理。 less test.md | tr a b &gt; out.md 将less获取的输出作为输入，然后将其中的a转换成b输出到out.md中。</p>
-<h3 id="_5">常用参数</h3>
+<p>转换文本中的内容，转换在内存中进行，不会修改源文件。 需要将其它程序的输出作为输入进行处理。 <code>less test | tr a b &gt; out</code> 将less获取的输出作为输入，然后将其中的a转换成b输出到out中。</p>
+<h3 id="_5">参数</h3>
 <ul>
 <li>
 <p>-s 将<strong>连续的</strong>字符或者字符串转换成指定字符或者字符串<br />
-<code>less test.md | tr -s 'ab' 'b'</code> 将test.md中连续的ab替换成b的内容作为输出</p>
+<code>less test | tr -s 'ab' 'b'</code> 将test中连续的ab替换成b的内容作为输出</p>
 </li>
 <li>
 <p>-d 删除字符<br />
-<code>less test.md | tr -d a</code> 删除test.md中出现的a字符的内容作为输出</p>
+<code>less test | tr -d a</code> 删除test中出现的a字符的内容作为输出</p>
 </li>
+</ul>
+<h2 id="cut">cut</h2>
+<p>截取每一行中指定的字节/字符/列，截取在内存中进行，不会修改源文件。比如：<code>cut -c 1-3 test</code>，截取test中每一行的第一字符<strong>至</strong>第三字符。</p>
+<h3 id="_6">参数</h3>
+<ul>
+<li>-b 按字节截取<br />
+<code>cut -b 1-3 test</code> 截取test中每一行的第一字节<strong>至</strong>第三字节。</li>
+<li>-d 按指定分隔符截取，-f 按字段截取。每一行的列与列之间通过<code>-d</code>区分，否则会当成一个字段<br />
+<code>cut -d ' ' -f 1-3 test</code> 截取test中每一行中的第一列<strong>至</strong>第三列,列与列之间以空格作为间隔</li>
+</ul>
+<h2 id="paste">paste</h2>
+<p>将多个文件中的内容水平拼接在一块，文件与文件之间的内容默认是以制表符作为间隔。比如：<code>paste test test2</code> 将test和test2中的内容拼接在一起</p>
+<h3 id="_7">参数</h3>
+<ul>
+<li>-d 自定义文件之间的间隔符<br />
+<code>paste -d '|' test test2</code> 用 <code>|</code>作为test和test2的间隔符。</li>
+<li>-s 一次性读取完一个文件作为一行，文件之间垂直拼接<br />
+<code>paste -s test test2</code> 先从左到右，从上到下读取完test中的内容放到第一行，然后再从左到右，从上到下读取test2中的内容放到下一行。</li>
+</ul>
+<h2 id="wc">wc</h2>
+<p>统计文件中的字节数/字符数/单词数量/行数。 比如 <code>wc -w test</code>统计test中的单词数量</p>
+<h3 id="_8">参数</h3>
+<ul>
+<li>-c 统计字节数量</li>
+<li>-m 统计字符数量</li>
+<li>-w 统计单词数量</li>
+<li>-l 统计行数</li>
+</ul>
+<h1 id="_9">参考</h1>
+<ul>
+<li><a href="https://www.geeksforgeeks.org/linux-commands/">https://www.geeksforgeeks.org/linux-commands/</a></li>
 </ul>
     </div>
     <div id="footer">
       <span>
         <p>Copyright © 2019 JinShuai.
         Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
-        <p>Site Generated 2019-04-08 09:08:22</p>
+        <p>Site Generated 2019-04-09 09:58:20</p>
       </span>
     </div>
 
