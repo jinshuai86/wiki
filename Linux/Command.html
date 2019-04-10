@@ -26,6 +26,7 @@
 <div class="page_title">Linux Command</div>
 
   <h1 id="_1">文件处理</h1>
+<p>涉及到查找文件、将文件内容加载到内存中进行操作。</p>
 <h2 id="find">find</h2>
 <p>用于查找文件，比如 <code>find / -name *.java</code> 查找根目录下的所有java文件</p>
 <h3 id="_2">参数</h3>
@@ -99,19 +100,27 @@
 <p>截取每一行中指定的字节/字符/列，截取在内存中进行，不会修改源文件。比如：<code>cut -c 1-3 test</code>，截取test中每一行的第一字符<strong>至</strong>第三字符。</p>
 <h3 id="_6">参数</h3>
 <ul>
-<li>-b 按字节截取<br />
-<code>cut -b 1-3 test</code> 截取test中每一行的第一字节<strong>至</strong>第三字节。</li>
-<li>-d 按指定分隔符截取，-f 按字段截取。每一行的列与列之间通过<code>-d</code>区分，否则会当成一个字段<br />
-<code>cut -d ' ' -f 1-3 test</code> 截取test中每一行中的第一列<strong>至</strong>第三列,列与列之间以空格作为间隔</li>
+<li>
+<p>-b 按字节截取<br />
+<code>cut -b 1-3 test</code> 截取test中每一行的第一字节<strong>至</strong>第三字节。</p>
+</li>
+<li>
+<p>-d 按指定分隔符截取，-f 按字段截取。每一行的列与列之间通过<code>-d</code>区分，否则会当成一个字段<br />
+<code>cut -d ' ' -f 1-3 test</code> 截取test中每一行中的第一列<strong>至</strong>第三列,列与列之间以空格作为间隔</p>
+</li>
 </ul>
 <h2 id="paste">paste</h2>
 <p>将多个文件中的内容水平拼接在一块，文件与文件之间的内容默认是以制表符作为间隔。比如：<code>paste test test2</code> 将test和test2中的内容拼接在一起</p>
 <h3 id="_7">参数</h3>
 <ul>
-<li>-d 自定义文件之间的间隔符<br />
-<code>paste -d '|' test test2</code> 用 <code>|</code>作为test和test2的间隔符。</li>
-<li>-s 一次性读取完一个文件作为一行，文件之间垂直拼接<br />
-<code>paste -s test test2</code> 先从左到右，从上到下读取完test中的内容放到第一行，然后再从左到右，从上到下读取test2中的内容放到下一行。</li>
+<li>
+<p>-d 自定义文件之间的间隔符<br />
+<code>paste -d '|' test test2</code> 用 <code>|</code>作为test和test2的间隔符。</p>
+</li>
+<li>
+<p>-s 一次性读取完一个文件作为一行，文件之间垂直拼接<br />
+<code>paste -s test test2</code> 先从左到右，从上到下读取完test中的内容放到第一行，然后再从左到右，从上到下读取test2中的内容放到下一行。</p>
+</li>
 </ul>
 <h2 id="wc">wc</h2>
 <p>统计文件中的字节数/字符数/单词数量/行数。 比如 <code>wc -w test</code>统计test中的单词数量</p>
@@ -122,7 +131,25 @@
 <li>-w 统计单词数量</li>
 <li>-l 统计行数</li>
 </ul>
-<h1 id="_9">参考</h1>
+<h1 id="_9">系统信息</h1>
+<p>查看机器的运行状态，比如进程快照信息，IO信息，内存/磁盘使用情况。</p>
+<h2 id="psprocess-status">ps(process status)</h2>
+<p>查看进程状态<strong>快照</strong>，比如<code>ps -aux|grep java</code> 打印关于Java进程的快照</p>
+<h3 id="_10">参数</h3>
+<ul>
+<li>-aux/-ef 查看系统正在运行的<strong>所有</strong>进程快照<br />
+标准的语法： <code>ps -ef</code> 基于BSD的语法 <code>ps -aux</code></li>
+</ul>
+<h2 id="top">top</h2>
+<p>实时监控进程状态信息。并且可以交互(按P则会按照CPU使用率排序，按M则会按内存使用率排序)。比如 <code>top -u js</code> 实时查看用户<code>js</code>开启的进程信息</p>
+<h3 id="_11">参数</h3>
+<ul>
+<li>-p pid 实时监控进程号为<code>pid</code>的进程信息<br />
+<code>ps -p 20348</code> 监控进程号为<code>20348</code>的进程信息</li>
+<li>-Hp pid 实时监控进程号为<code>pid</code>的<strong>线程</strong>状态<br />
+<code>ps -Hp 20348</code> 监控进程号为<code>20348</code>的进程内部的线程状态</li>
+</ul>
+<h1 id="_12">参考</h1>
 <ul>
 <li><a href="https://www.geeksforgeeks.org/linux-commands/">https://www.geeksforgeeks.org/linux-commands/</a></li>
 </ul>
@@ -131,7 +158,7 @@
       <span>
         <p>Copyright © 2019 JinShuai.
         Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
-        <p>Site Generated 2019-04-09 09:58:20</p>
+        <p>Site Generated 2019-04-10 09:16:51</p>
       </span>
     </div>
 
