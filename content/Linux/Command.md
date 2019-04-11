@@ -98,7 +98,28 @@ date: 2019-04-05
 `ps -p 20348` 监控进程号为`20348`的进程信息
 - \-Hp pid 实时监控进程号为`pid`的**线程**状态
 `ps -Hp 20348` 监控进程号为`20348`的进程内部的线程状态
+- \-d seconds 每seconds秒刷新一次
 
+## lsof(list open files)
+查看打开的文件，比如 `lsof -p 23478` 查看进程号为`23478`打开的文件
+### 参数
+- \-i [46][protocol][@hostname|hostaddr][:service|port] 列出具有指定网络地址的文件(网络地址包括网络层协议版本IPV6/4、运输层协议类型TCP/UDP、主机名、端口号。这几个是可选的，如果不写就默认所有)
+`lsof -i :80` 列出网络地址中网络层是IPV6或IPV4并且运输层是TCP或UDP并且主机名是任意的，**但是占用的端口号是80的文件**。 意思就是查看占用80端口的进程。
+- \-u user 查看指定用户打开的文件
+`lsof -u js` 查看用户`js`打开的文件
+- \-p pid 查看指定**进程号**打开的文件
+`lsof -p 23478` 查看进程号为`23478`打开的文件
+- \-c command 查看指定**进程**
+`lsof -p java` 查看命令为`java`的打开的文件
+- `+`d directory 查看指定目录下被打开的文件 `+`D加上递归
+`lsof +d /home/js/workspace` 查看/home/js/workspace下被打开的文件
 
+## free
+查看内存及交换区使用情况
+### 参数
+- \-b 以字节(B)形式显示
+- \-k 以千字节(KB)形式显示 
+- \-m 以兆字节(MB)形式显示
+- \-g 以吉字节(GB)形式显示
 # 参考
 - [https://www.geeksforgeeks.org/linux-commands/](https://www.geeksforgeeks.org/linux-commands/)
