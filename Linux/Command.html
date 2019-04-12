@@ -166,15 +166,42 @@
 <code>lsof +d /home/js/workspace</code> 查看/home/js/workspace下被打开的文件</li>
 </ul>
 <h2 id="free">free</h2>
-<p>查看内存及交换区使用情况</p>
+<p>查看内存及交换区使用情况 比如 <code>free -b</code> 以字节的形式显示内存使用情况</p>
 <h3 id="_13">参数</h3>
 <ul>
 <li>-b 以字节(B)形式显示</li>
 <li>-k 以千字节(KB)形式显示 </li>
 <li>-m 以兆字节(MB)形式显示</li>
-<li>-g 以GB形式显示</li>
+<li>-g 以吉字节(GB)形式显示</li>
 </ul>
-<h1 id="_14">参考</h1>
+<h2 id="sar">sar</h2>
+<p>监控CPU使用率、内存使用率、磁盘IO情况、网卡工作情况 比如 <code>sar -b 1 2</code> 查看磁盘IO情况，每一秒显示一次，共显示两次。</p>
+<h3 id="_14">参数</h3>
+<ul>
+<li>-q 查看运行队列中进程数量、进程总数量、系统平均负载(单位时间内(等待队列中进程数量+运行队列中进程数量) / CPU最高能处理的进程数量)。单核负载=负载/CPU总核数。每个核的负载在0.7左右比较正常。</li>
+<li>-u 查看CPU的使用率</li>
+<li>-r 内存使用情况</li>
+</ul>
+<h1 id="_15">网络工具</h1>
+<p>查看网络信息，比如查看处于不同连接状态(运输层是TCP/UDP、已经建立或者正在监听)的连接</p>
+<h2 id="netstat">netstat</h2>
+<p>查看网络连接状态信息。比如 <code>netstat -t</code> 查看已经建立的TCP连接信息</p>
+<h3 id="_16">参数</h3>
+<ul>
+<li>-a 查看所有状态的连接(已经建立、正在监听)</li>
+<li>-t 查看已经建立的TCP连接信息</li>
+<li>-u 查看已经建立的UDP连接信息</li>
+<li>-l 查看处于监听状态的连接</li>
+<li>-n 不解析名称，加上后，端口号以数字显示</li>
+<li>-p 查看处于当前连接的进程名/进程ID <blockquote>
+<p><code>netstat -tp</code> 查看协议是TCP的进程名<br />
+<code>netstat -np | grep nginx</code> 查看和<code>nginx</code>进程有关的端口号(本地端口、远程端口)<br />
+<code>netstat -np | grep 80</code> 查看和<code>80</code>端口号有关的连接(<strong>不一定是占用</strong>，可能请求的远程地址对应的端口也是80)<br />
+<code>netstat -ntlp | grep nginx</code> 查看<code>nginx</code>进程正在监听的端口号</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="_17">参考</h1>
 <ul>
 <li><a href="https://www.geeksforgeeks.org/linux-commands/">https://www.geeksforgeeks.org/linux-commands/</a></li>
 </ul>
@@ -183,7 +210,7 @@
       <span>
         <p>Copyright © 2019 JinShuai.
         Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
-        <p>Site Generated 2019-04-11 09:14:27</p>
+        <p>Site Generated 2019-04-12 10:01:50</p>
       </span>
     </div>
 
