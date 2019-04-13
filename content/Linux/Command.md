@@ -82,6 +82,7 @@ date: 2019-04-05
 - \-m 统计字符数量
 - \-w 统计单词数量
 - \-l 统计行数
+---
 
 # 系统信息
 查看机器的运行状态，比如进程快照信息，IO信息，内存/磁盘使用情况。
@@ -130,7 +131,7 @@ date: 2019-04-05
 - \-r 内存使用情况
 
 # 网络工具
-查看网络信息，比如查看处于不同连接状态(运输层是TCP/UDP、已经建立或者正在监听)的连接
+查看网络信息，比如查看处于不同连接状态(运输层是TCP/UDP、已经建立或者正在监听)的连接。发送网络请求
 ## netstat
 查看网络连接状态信息。比如 `netstat -t` 查看已经建立的TCP连接信息
 ### 参数
@@ -143,6 +144,21 @@ date: 2019-04-05
 >`netstat -tp` 查看协议是TCP的进程名  
 `netstat -np | grep nginx` 查看和`nginx`进程有关的端口号(本地端口、远程端口)  
 `netstat -np | grep 80` 查看和`80`端口号有关的连接(**不一定是占用**，可能请求的远程地址对应的端口也是80)  
-`netstat -ntlp | grep nginx` 查看`nginx`进程正在监听的端口号
+`netstat -ntlp | grep ` `nginx`进程正在监听的端口号
+
+# 其它
+- cd 切换目录
+- ls 列出目录中的文件
+- cp 拷贝文件
+- mkdir 创建文件夹
+- touch 创建文件
+- rm 删除文件/文件夹
+- mv 移动文件/文件夹、修改文件名
+- less 分页查看文件内容。其它还有cat、tac、
+- head 查看文件首部内容，默认前10行。
+- tail 查看文件尾部内容，默认后10行。一般加`-f`可以实时查看
+- chmod 修改文件/文件夹权限 `ugo rwx=421`。 一般加 `-R` 递归修改
+- kill 杀死进程。 一般加\-9杀死某进程相关进程
+
 # 参考
 - [https://www.geeksforgeeks.org/linux-commands/](https://www.geeksforgeeks.org/linux-commands/)
