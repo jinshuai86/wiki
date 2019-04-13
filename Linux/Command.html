@@ -131,6 +131,7 @@
 <li>-w 统计单词数量</li>
 <li>-l 统计行数</li>
 </ul>
+<hr />
 <h1 id="_9">系统信息</h1>
 <p>查看机器的运行状态，比如进程快照信息，IO信息，内存/磁盘使用情况。</p>
 <h2 id="psprocess-status">ps(process status)</h2>
@@ -183,7 +184,7 @@
 <li>-r 内存使用情况</li>
 </ul>
 <h1 id="_15">网络工具</h1>
-<p>查看网络信息，比如查看处于不同连接状态(运输层是TCP/UDP、已经建立或者正在监听)的连接</p>
+<p>查看网络信息，比如查看处于不同连接状态(运输层是TCP/UDP、已经建立或者正在监听)的连接。发送网络请求</p>
 <h2 id="netstat">netstat</h2>
 <p>查看网络连接状态信息。比如 <code>netstat -t</code> 查看已经建立的TCP连接信息</p>
 <h3 id="_16">参数</h3>
@@ -197,11 +198,26 @@
 <p><code>netstat -tp</code> 查看协议是TCP的进程名<br />
 <code>netstat -np | grep nginx</code> 查看和<code>nginx</code>进程有关的端口号(本地端口、远程端口)<br />
 <code>netstat -np | grep 80</code> 查看和<code>80</code>端口号有关的连接(<strong>不一定是占用</strong>，可能请求的远程地址对应的端口也是80)<br />
-<code>netstat -ntlp | grep nginx</code> 查看<code>nginx</code>进程正在监听的端口号</p>
+<code>netstat -ntlp | grep</code> <code>nginx</code>进程正在监听的端口号</p>
 </blockquote>
 </li>
 </ul>
-<h1 id="_17">参考</h1>
+<h1 id="_17">其它</h1>
+<ul>
+<li>cd 切换目录</li>
+<li>ls 列出目录中的文件</li>
+<li>cp 拷贝文件</li>
+<li>mkdir 创建文件夹</li>
+<li>touch 创建文件</li>
+<li>rm 删除文件/文件夹</li>
+<li>mv 移动文件/文件夹、修改文件名</li>
+<li>less 分页查看文件内容。其它还有cat、tac、</li>
+<li>head 查看文件首部内容，默认前10行。</li>
+<li>tail 查看文件尾部内容，默认后10行。一般加<code>-f</code>可以实时查看</li>
+<li>chmod 修改文件/文件夹权限 <code>ugo rwx=421</code>。 一般加 <code>-R</code> 递归修改</li>
+<li>kill 杀死进程。 一般加-9杀死某进程相关进程</li>
+</ul>
+<h1 id="_18">参考</h1>
 <ul>
 <li><a href="https://www.geeksforgeeks.org/linux-commands/">https://www.geeksforgeeks.org/linux-commands/</a></li>
 </ul>
@@ -210,7 +226,7 @@
       <span>
         <p>Copyright © 2019 JinShuai.
         Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
-        <p>Site Generated 2019-04-12 10:01:50</p>
+        <p>Site Generated 2019-04-13 10:56:52</p>
       </span>
     </div>
 
