@@ -146,6 +146,28 @@ date: 2019-04-05
 `netstat -np | grep 80` 查看和`80`端口号有关的连接(**不一定是占用**，可能请求的远程地址对应的端口也是80)  
 `netstat -ntlp | grep ` `nginx`进程正在监听的端口号
 
+## curl
+重点是模拟发送网络请求(HTTP、FTP、SCP、POP3、SMTP...)，不是下载数据。 默认重定向到标准输出。
+### 参数
+- \-o/O 指定保存的文件名/使用请求的文件的文件名
+`curl -o test.html jinshuai86.github.io/wiki/Linux/Command.html` 将`Command.html`中的内容保存到`test.html`中  
+`curl -O jinshuai86.github.io/wiki/Linux/Command.html` 将`Command.html`中的内容保存到本地文件，本地文件的文件名为`Command.html`。  
+- \-L 重定向。比如遇到`301`、`302`时，`curl`默认不会重定向到`location header`中的`URL`，加上`-L`就会重定向到`location header`中的`URL`。
+`curl jinshuai86.github.io/about`请求的内容是`301`页面，加上`-L`即可重定向到新的页面。
+- \-C 对大文件的下载支持断点续传。 注意下载文件要用 `-o/O`，`C`和`o/O`之间有`-`分隔
+`curl -C - -O http://www.gnu.org/software/gettext/manual/gettext.html`
+- \-d/--data 模拟发送HTTP POST请求 加上`-urlencode`会对特殊字符进行转义比如`空格=>%20`
+`curl -d-urlencode "username=jin shuai&password=123" http://jinshuai86.github.io`
+- \-D 获取服务器要在本地设置的`cookie`。 比如 `curl -D cookie https://www.github.com`将要设置的`cookie`保存到`cookie`文件中
+- \-b 发送请求时，使用cookie。可以使用通过`-D`设置的cookie。比如 `curl -b cookie https://www.github.com`
+
+## wget
+下载数据，相对`curl`，`wget`支持递归下载
+### 参数
+- \-r 进行递归下载，将当前页面内包含的其它链接内容也一并下载下来
+- \-\-reject=filetype,filetype 不下载执行类型的文件。多个类型用`,`隔开。 比如`wget --reject=css,js jinshuai86.github.io/about` 不下载`css`和`js`类型的文件  
+- \-\-accept=filetype,filetype 只下载指定类型的文件。多个类型用`,`隔开。
+
 # 其它
 - cd 切换目录
 - ls 列出目录中的文件
