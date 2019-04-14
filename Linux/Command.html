@@ -202,7 +202,31 @@
 </blockquote>
 </li>
 </ul>
-<h1 id="_17">其它</h1>
+<h2 id="curl">curl</h2>
+<p>重点是模拟发送网络请求(HTTP、FTP、SCP、POP3、SMTP...)，不是下载数据。 默认重定向到标准输出。</p>
+<h3 id="_17">参数</h3>
+<ul>
+<li>-o/O 指定保存的文件名/使用请求的文件的文件名<br />
+<code>curl -o test.html jinshuai86.github.io/wiki/Linux/Command.html</code> 将<code>Command.html</code>中的内容保存到<code>test.html</code>中<br />
+<code>curl -O jinshuai86.github.io/wiki/Linux/Command.html</code> 将<code>Command.html</code>中的内容保存到本地文件，本地文件的文件名为<code>Command.html</code>。  </li>
+<li>-L 重定向。比如遇到<code>301</code>、<code>302</code>时，<code>curl</code>默认不会重定向到<code>location header</code>中的<code>URL</code>，加上<code>-L</code>就会重定向到<code>location header</code>中的<code>URL</code>。<br />
+<code>curl jinshuai86.github.io/about</code>请求的内容是<code>301</code>页面，加上<code>-L</code>即可重定向到新的页面。</li>
+<li>-C 对大文件的下载支持断点续传。 注意下载文件要用 <code>-o/O</code>，<code>C</code>和<code>o/O</code>之间有<code>-</code>分隔<br />
+<code>curl -C - -O http://www.gnu.org/software/gettext/manual/gettext.html</code></li>
+<li>-d/--data 模拟发送HTTP POST请求 加上<code>-urlencode</code>会对特殊字符进行转义比如<code>空格=&gt;%20</code><br />
+<code>curl -d-urlencode "username=jin shuai&amp;password=123" http://jinshuai86.github.io</code></li>
+<li>-D 获取服务器要在本地设置的<code>cookie</code>。 比如 <code>curl -D cookie https://www.github.com</code>将要设置的<code>cookie</code>保存到<code>cookie</code>文件中</li>
+<li>-b 发送请求时，使用cookie。可以使用通过<code>-D</code>设置的cookie。比如 <code>curl -b cookie https://www.github.com</code></li>
+</ul>
+<h2 id="wget">wget</h2>
+<p>下载数据，相对<code>curl</code>，<code>wget</code>支持递归下载</p>
+<h3 id="_18">参数</h3>
+<ul>
+<li>-r 进行递归下载，将当前页面内包含的其它链接内容也一并下载下来</li>
+<li>--reject=filetype,filetype 不下载执行类型的文件。多个类型用<code>,</code>隔开。 比如<code>wget --reject=css,js jinshuai86.github.io/about</code> 不下载<code>css</code>和<code>js</code>类型的文件  </li>
+<li>--accept=filetype,filetype 只下载指定类型的文件。多个类型用<code>,</code>隔开。</li>
+</ul>
+<h1 id="_19">其它</h1>
 <ul>
 <li>cd 切换目录</li>
 <li>ls 列出目录中的文件</li>
@@ -217,7 +241,7 @@
 <li>chmod 修改文件/文件夹权限 <code>ugo rwx=421</code>。 一般加 <code>-R</code> 递归修改</li>
 <li>kill 杀死进程。 一般加-9杀死某进程相关进程</li>
 </ul>
-<h1 id="_18">参考</h1>
+<h1 id="_20">参考</h1>
 <ul>
 <li><a href="https://www.geeksforgeeks.org/linux-commands/">https://www.geeksforgeeks.org/linux-commands/</a></li>
 </ul>
@@ -226,7 +250,7 @@
       <span>
         <p>Copyright © 2019 JinShuai.
         Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
-        <p>Site Generated 2019-04-13 10:56:52</p>
+        <p>Site Generated 2019-04-14 11:04:43</p>
       </span>
     </div>
 
