@@ -226,7 +226,20 @@
 <li>--reject=filetype,filetype 不下载执行类型的文件。多个类型用<code>,</code>隔开。 比如<code>wget --reject=css,js jinshuai86.github.io/about</code> 不下载<code>css</code>和<code>js</code>类型的文件  </li>
 <li>--accept=filetype,filetype 只下载指定类型的文件。多个类型用<code>,</code>隔开。</li>
 </ul>
-<h1 id="_19">其它</h1>
+<h2 id="scp">scp</h2>
+<p>远程传输文件，基于<code>SSH</code>协议。<code>scp</code>相对于<code>ftp</code>、<code>rsync</code>，传输速度较快，对系统影响不大。<br />
+比如 <code>scp localfile remoteIP:folder</code> 将<strong>本地文件</strong><code>localfile</code>传输到IP地址为<code>remoteIP</code>的<code>foler</code>文件夹中<br />
+<code>Windows</code>下有图形界面的<code>winscp</code>工具支持<code>scp</code></p>
+<h2 id="_19">参数</h2>
+<ul>
+<li>-r 递归传输整个目录</li>
+</ul>
+<h2 id="_20">常用</h2>
+<h3 id="_21">上传本地文件到远程服务器</h3>
+<p><code>scp -r upload 114.114.114.114:~/download</code> 将本地文件夹<code>upload</code>传输到<code>114.114.114.114</code>的<code>~/download</code>文件夹  </p>
+<h3 id="ssh">复制远程服务器文件到本地(远程需要开SSH服务)</h3>
+<p><code>scp 114.114.114.114:~/upload/note.md ~/download</code> 将远程<code>114.114.114.114</code>的<code>node.md</code>下载到本地的<code>~/download</code>目录  </p>
+<h1 id="_22">其它</h1>
 <ul>
 <li>cd 切换目录</li>
 <li>ls 列出目录中的文件</li>
@@ -241,16 +254,17 @@
 <li>chmod 修改文件/文件夹权限 <code>ugo rwx=421</code>。 一般加 <code>-R</code> 递归修改</li>
 <li>kill 杀死进程。 一般加-9杀死某进程相关进程</li>
 </ul>
-<h1 id="_20">参考</h1>
+<h1 id="_23">参考</h1>
 <ul>
 <li><a href="https://www.geeksforgeeks.org/linux-commands/">https://www.geeksforgeeks.org/linux-commands/</a></li>
+<li><a href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html">https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html</a></li>
 </ul>
     </div>
     <div id="footer">
       <span>
         <p>Copyright © 2019 JinShuai.
         Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
-        <p>Site Generated 2019-04-14 11:04:43</p>
+        <p>Site Generated 2019-04-18 09:06:12</p>
       </span>
     </div>
 
