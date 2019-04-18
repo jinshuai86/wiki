@@ -168,6 +168,21 @@ date: 2019-04-05
 - \-\-reject=filetype,filetype 不下载执行类型的文件。多个类型用`,`隔开。 比如`wget --reject=css,js jinshuai86.github.io/about` 不下载`css`和`js`类型的文件  
 - \-\-accept=filetype,filetype 只下载指定类型的文件。多个类型用`,`隔开。
 
+## scp
+远程传输文件，基于`SSH`协议。`scp`相对于`ftp`、`rsync`，传输速度较快，对系统影响不大。  
+比如 `scp localfile remoteIP:folder` 将**本地文件**`localfile`传输到IP地址为`remoteIP`的`foler`文件夹中  
+`Windows`下有图形界面的`winscp`工具支持`scp`
+## 参数
+- \-r 递归传输整个目录
+
+## 常用
+### 上传本地文件到远程服务器
+`scp -r upload 114.114.114.114:~/download` 将本地文件夹`upload`传输到`114.114.114.114`的`~/download`文件夹  
+
+### 复制远程服务器文件到本地(远程需要开SSH服务)
+`scp 114.114.114.114:~/upload/note.md ~/download` 将远程`114.114.114.114`的`node.md`下载到本地的`~/download`目录  
+
+
 # 其它
 - cd 切换目录
 - ls 列出目录中的文件
@@ -184,3 +199,4 @@ date: 2019-04-05
 
 # 参考
 - [https://www.geeksforgeeks.org/linux-commands/](https://www.geeksforgeeks.org/linux-commands/)
+- [https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html](https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html)
