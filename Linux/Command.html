@@ -83,9 +83,17 @@
 <code>sort -r -k 1 /home/js/test</code> 对test里的每行按第 1 列逆序排序</p>
 </li>
 </ul>
+<h2 id="uniq">uniq</h2>
+<p>过滤掉相邻的重复行，<strong>重复行需要相邻(需要先用sort排序，使得重复行相邻)。</strong> 比如 <code>sort /home/test | uniq</code> 输出去除重复行的内容</p>
+<h3 id="_5">参数</h3>
+<ul>
+<li>-i 忽略大小写</li>
+<li>-d 输出重复行</li>
+<li>-D 输出所有重复行</li>
+</ul>
 <h2 id="trtransfer">tr(transfer)</h2>
 <p>转换文本中的内容，转换在内存中进行，不会修改源文件。 需要将其它程序的输出作为输入进行处理。 <code>less test | tr a b &gt; out</code> 将less获取的输出作为输入，然后将其中的a转换成b输出到out中。</p>
-<h3 id="_5">参数</h3>
+<h3 id="_6">参数</h3>
 <ul>
 <li>
 <p>-s 将<strong>连续的</strong>字符或者字符串转换成指定字符或者字符串<br />
@@ -98,7 +106,7 @@
 </ul>
 <h2 id="cut">cut</h2>
 <p>截取每一行中指定的字节/字符/列，截取在内存中进行，不会修改源文件。比如：<code>cut -c 1-3 test</code>，截取test中每一行的第一字符<strong>至</strong>第三字符。</p>
-<h3 id="_6">参数</h3>
+<h3 id="_7">参数</h3>
 <ul>
 <li>
 <p>-b 按字节截取<br />
@@ -111,7 +119,7 @@
 </ul>
 <h2 id="paste">paste</h2>
 <p>将多个文件中的内容水平拼接在一块，文件与文件之间的内容默认是以制表符作为间隔。比如：<code>paste test test2</code> 将test和test2中的内容拼接在一起</p>
-<h3 id="_7">参数</h3>
+<h3 id="_8">参数</h3>
 <ul>
 <li>
 <p>-d 自定义文件之间的间隔符<br />
@@ -124,7 +132,7 @@
 </ul>
 <h2 id="wc">wc</h2>
 <p>统计文件中的字节数/字符数/单词数量/行数。 比如 <code>wc -w test</code>统计test中的单词数量</p>
-<h3 id="_8">参数</h3>
+<h3 id="_9">参数</h3>
 <ul>
 <li>-c 统计字节数量</li>
 <li>-m 统计字符数量</li>
@@ -132,28 +140,28 @@
 <li>-l 统计行数</li>
 </ul>
 <hr />
-<h1 id="_9">系统信息</h1>
+<h1 id="_10">系统信息</h1>
 <p>查看机器的运行状态，比如进程快照信息，IO信息，内存/磁盘使用情况。</p>
 <h2 id="psprocess-status">ps(process status)</h2>
 <p>查看进程状态<strong>快照</strong>，比如<code>ps -aux|grep java</code> 打印关于Java进程的快照</p>
-<h3 id="_10">参数</h3>
+<h3 id="_11">参数</h3>
 <ul>
 <li>-aux/-ef 查看系统正在运行的<strong>所有</strong>进程快照<br />
-标准的语法： <code>ps -ef</code> 基于BSD的语法 <code>ps -aux</code></li>
+标准的语法： <code>ps -ef</code>  基于BSD的语法 <code>ps -aux</code></li>
 </ul>
 <h2 id="top">top</h2>
 <p>实时监控进程状态信息。并且可以交互(按P则会按照CPU使用率排序，按M则会按内存使用率排序)。比如 <code>top -u js</code> 实时查看用户<code>js</code>开启的进程信息</p>
-<h3 id="_11">参数</h3>
+<h3 id="_12">参数</h3>
 <ul>
 <li>-p pid 实时监控进程号为<code>pid</code>的进程信息<br />
-<code>ps -p 20348</code> 监控进程号为<code>20348</code>的进程信息</li>
+<code>top -p 20348</code> 监控进程号为<code>20348</code>的进程信息</li>
 <li>-Hp pid 实时监控进程号为<code>pid</code>的<strong>线程</strong>状态<br />
-<code>ps -Hp 20348</code> 监控进程号为<code>20348</code>的进程内部的线程状态</li>
+<code>top -Hp 20348</code> 监控进程号为<code>20348</code>的进程内部的线程状态</li>
 <li>-d seconds 每seconds秒刷新一次</li>
 </ul>
 <h2 id="lsoflist-open-files">lsof(list open files)</h2>
 <p>查看打开的文件，比如 <code>lsof -p 23478</code> 查看进程号为<code>23478</code>打开的文件</p>
-<h3 id="_12">参数</h3>
+<h3 id="_13">参数</h3>
 <ul>
 <li>-i [46][protocol][@hostname|hostaddr][:service|port] 列出具有指定网络地址的文件(网络地址包括网络层协议版本IPV6/4、运输层协议类型TCP/UDP、主机名、端口号。这几个是可选的，如果不写就默认所有)<br />
 <code>lsof -i :80</code> 列出网络地址中网络层是IPV6或IPV4并且运输层是TCP或UDP并且主机名是任意的，<strong>但是占用的端口号是80的文件</strong>。 意思就是查看占用80端口的进程。</li>
@@ -168,7 +176,7 @@
 </ul>
 <h2 id="free">free</h2>
 <p>查看内存及交换区使用情况 比如 <code>free -b</code> 以字节的形式显示内存使用情况</p>
-<h3 id="_13">参数</h3>
+<h3 id="_14">参数</h3>
 <ul>
 <li>-b 以字节(B)形式显示</li>
 <li>-k 以千字节(KB)形式显示 </li>
@@ -177,17 +185,17 @@
 </ul>
 <h2 id="sar">sar</h2>
 <p>监控CPU使用率、内存使用率、磁盘IO情况、网卡工作情况 比如 <code>sar -b 1 2</code> 查看磁盘IO情况，每一秒显示一次，共显示两次。</p>
-<h3 id="_14">参数</h3>
+<h3 id="_15">参数</h3>
 <ul>
 <li>-q 查看运行队列中进程数量、进程总数量、系统平均负载(单位时间内(等待队列中进程数量+运行队列中进程数量) / CPU最高能处理的进程数量)。单核负载=负载/CPU总核数。每个核的负载在0.7左右比较正常。</li>
 <li>-u 查看CPU的使用率</li>
 <li>-r 内存使用情况</li>
 </ul>
-<h1 id="_15">网络工具</h1>
+<h1 id="_16">网络工具</h1>
 <p>查看网络信息，比如查看处于不同连接状态(运输层是TCP/UDP、已经建立或者正在监听)的连接。发送网络请求</p>
 <h2 id="netstat">netstat</h2>
 <p>查看网络连接状态信息。比如 <code>netstat -t</code> 查看已经建立的TCP连接信息</p>
-<h3 id="_16">参数</h3>
+<h3 id="_17">参数</h3>
 <ul>
 <li>-a 查看所有状态的连接(已经建立、正在监听)</li>
 <li>-t 查看已经建立的TCP连接信息</li>
@@ -204,7 +212,7 @@
 </ul>
 <h2 id="curl">curl</h2>
 <p>重点是模拟发送网络请求(HTTP、FTP、SCP、POP3、SMTP...)，不是下载数据。 默认重定向到标准输出。</p>
-<h3 id="_17">参数</h3>
+<h3 id="_18">参数</h3>
 <ul>
 <li>-o/O 指定保存的文件名/使用请求的文件的文件名<br />
 <code>curl -o test.html jinshuai86.github.io/wiki/Linux/Command.html</code> 将<code>Command.html</code>中的内容保存到<code>test.html</code>中<br />
@@ -220,7 +228,7 @@
 </ul>
 <h2 id="wget">wget</h2>
 <p>下载数据，相对<code>curl</code>，<code>wget</code>支持递归下载</p>
-<h3 id="_18">参数</h3>
+<h3 id="_19">参数</h3>
 <ul>
 <li>-r 进行递归下载，将当前页面内包含的其它链接内容也一并下载下来</li>
 <li>--reject=filetype,filetype 不下载执行类型的文件。多个类型用<code>,</code>隔开。 比如<code>wget --reject=css,js jinshuai86.github.io/about</code> 不下载<code>css</code>和<code>js</code>类型的文件  </li>
@@ -230,16 +238,16 @@
 <p>远程传输文件，基于<code>SSH</code>协议。<code>scp</code>相对于<code>ftp</code>、<code>rsync</code>，传输速度较快，对系统影响不大。<br />
 比如 <code>scp localfile remoteIP:folder</code> 将<strong>本地文件</strong><code>localfile</code>传输到IP地址为<code>remoteIP</code>的<code>foler</code>文件夹中<br />
 <code>Windows</code>下有图形界面的<code>winscp</code>工具支持<code>scp</code></p>
-<h2 id="_19">参数</h2>
+<h2 id="_20">参数</h2>
 <ul>
 <li>-r 递归传输整个目录</li>
 </ul>
-<h2 id="_20">常用</h2>
-<h3 id="_21">上传本地文件到远程服务器</h3>
+<h2 id="_21">常用</h2>
+<h3 id="_22">上传本地文件到远程服务器</h3>
 <p><code>scp -r upload 114.114.114.114:~/download</code> 将本地文件夹<code>upload</code>传输到<code>114.114.114.114</code>的<code>~/download</code>文件夹  </p>
 <h3 id="ssh">复制远程服务器文件到本地(远程需要开SSH服务)</h3>
 <p><code>scp 114.114.114.114:~/upload/note.md ~/download</code> 将远程<code>114.114.114.114</code>的<code>node.md</code>下载到本地的<code>~/download</code>目录  </p>
-<h1 id="_22">其它</h1>
+<h1 id="_23">其它</h1>
 <ul>
 <li>cd 切换目录</li>
 <li>ls 列出目录中的文件</li>
@@ -254,7 +262,7 @@
 <li>chmod 修改文件/文件夹权限 <code>ugo rwx=421</code>。 一般加 <code>-R</code> 递归修改</li>
 <li>kill 杀死进程。 一般加-9杀死某进程相关进程</li>
 </ul>
-<h1 id="_23">参考</h1>
+<h1 id="_24">参考</h1>
 <ul>
 <li><a href="https://www.geeksforgeeks.org/linux-commands/">https://www.geeksforgeeks.org/linux-commands/</a></li>
 <li><a href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html">https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html</a></li>
@@ -264,7 +272,7 @@
       <span>
         <p>Copyright © 2019 JinShuai.
         Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
-        <p>Site Generated 2019-04-18 09:06:12</p>
+        <p>Site Generated 2019-04-19 09:27:27</p>
       </span>
     </div>
 
