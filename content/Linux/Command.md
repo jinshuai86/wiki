@@ -41,7 +41,7 @@ date: 2019-04-05
 - \-d 按字典序(要排序的多个字符串不能在同一行)
 `sort -d /home/js/test` 对test里的每行内容按字典顺序排序 
 
-- \-k N 表示每行按第N列排序
+- \-k N 表示每行按第N列排序(**列与列之间要用空格隔开**)
 `sort -k 1 /home/js/test` 对test里的每行按第 1 列排序
 
 - \-r 和其它参数组合实现逆序排序
@@ -119,7 +119,7 @@ date: 2019-04-05
 - \-p pid 查看指定**进程号**打开的文件
 `lsof -p 23478` 查看进程号为`23478`打开的文件
 - \-c command 查看指定**进程**
-`lsof -p java` 查看命令为`java`的打开的文件
+`lsof -c java` 查看命令为`java`的打开的文件
 - `+`d directory 查看指定目录下被打开的文件 `+`D加上递归
 `lsof +d /home/js/workspace` 查看/home/js/workspace下被打开的文件
 
