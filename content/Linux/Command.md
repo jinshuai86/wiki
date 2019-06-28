@@ -206,6 +206,7 @@ date: 2019-04-05
 - tail 查看文件尾部内容，默认后10行。一般加`-f`可以实时查看
 - chmod 修改文件/文件夹权限 `ugo rwx=421`。 一般加 `-R` 递归修改
 - kill 杀死进程。 一般加\-9杀死某进程相关进程
+- alias 为命令创建别名。 比如 alias ll='ls -l' **(注意: 等于号左右不能有空格)**
 
 # 参考
 - [https://www.geeksforgeeks.org/linux-commands/](https://www.geeksforgeeks.org/linux-commands/)
