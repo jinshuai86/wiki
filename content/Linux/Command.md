@@ -41,7 +41,7 @@ date: 2019-04-05
 - \-d 按字典序(要排序的多个字符串不能在同一行)
 `sort -d /home/js/test` 对test里的每行内容按字典顺序排序 
 
-- \-k N 表示每行按第N列排序
+- \-k N 表示每行按第N列排序(**列与列之间要用空格隔开**)
 `sort -k 1 /home/js/test` 对test里的每行按第 1 列排序
 
 - \-r 和其它参数组合实现逆序排序
@@ -54,6 +54,7 @@ date: 2019-04-05
 - \-i 忽略大小写
 - \-d 输出重复行
 - \-D 输出所有重复行
+- \-c 计算相同行的数量
 
 ## tr(transfer)
 转换文本中的内容，转换在内存中进行，不会修改源文件。 需要将其它程序的输出作为输入进行处理。 `less test | tr a b > out` 将less获取的输出作为输入，然后将其中的a转换成b输出到out中。
@@ -98,7 +99,8 @@ date: 2019-04-05
 查看进程状态**快照**，比如`ps -aux|grep java` 打印关于Java进程的快照
 ### 参数
 - \-aux/-ef 查看系统正在运行的**所有**进程快照
-标准的语法： `ps -ef`  基于BSD的语法 `ps -aux`
+标准的语法： `ps -ef`    
+基于BSD的语法: `ps -aux`  
 
 ## top
 实时监控进程状态信息。并且可以交互(按P则会按照CPU使用率排序，按M则会按内存使用率排序)。比如 `top -u js` 实时查看用户`js`开启的进程信息
@@ -119,7 +121,7 @@ date: 2019-04-05
 - \-p pid 查看指定**进程号**打开的文件
 `lsof -p 23478` 查看进程号为`23478`打开的文件
 - \-c command 查看指定**进程**
-`lsof -p java` 查看命令为`java`的打开的文件
+`lsof -c java` 查看命令为`java`的打开的文件
 - `+`d directory 查看指定目录下被打开的文件 `+`D加上递归
 `lsof +d /home/js/workspace` 查看/home/js/workspace下被打开的文件
 
@@ -216,6 +218,7 @@ date: 2019-04-05
 - tail 查看文件尾部内容，默认后10行。一般加`-f`可以实时查看
 - chmod 修改文件/文件夹权限 `ugo rwx=421`。 一般加 `-R` 递归修改
 - kill 杀死进程。 一般加\-9杀死某进程相关进程
+- alias 为命令创建别名。 比如 alias ll='ls -l' **(注意: 等于号左右不能有空格)**
 
 # 参考
 - [https://www.geeksforgeeks.org/linux-commands/](https://www.geeksforgeeks.org/linux-commands/)
