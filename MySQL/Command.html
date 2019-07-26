@@ -29,12 +29,17 @@
 <h2 id="show-profiles">show profiles</h2>
 <p>查看执行SQL消耗的时间。<br />
 首先通过<code>set profiling=1</code>提前打开<code>profiling</code>性能分析。执行完SQL语句以后，可以通过<code>show profiles</code>查看SQL耗时(Duration),单位是秒。</p>
+<h2 id="_2">查询长事务</h2>
+<p>长事务会占用大量的回滚日志以及长时间持有锁资源。<code>information_schema.innodb_trx</code>记录了<strong>正在执行</strong>的事务信息。查询执行时长超过60s的事务。<br />
+<code>SELECT * FROM information_schema.innodb_trx where TIME_TO_SEC(timediff(now(),trx_started)) &gt; 60</code> </p>
+<h2 id="_3">查看复制情况</h2>
+<p><code>show slave status</code>。可以查看<code>Seconds_Behind_Master</code>列判断slave落后master几秒。</p>
     </div>
     <div id="footer">
       <span>
         <p>Copyright © 2019 JinShuai.
         Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
-        <p>Site Generated 2019-07-26 17:48:39</p>
+        <p>Site Generated 2019-07-26 17:52:41</p>
       </span>
     </div>
 
