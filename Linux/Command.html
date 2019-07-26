@@ -247,7 +247,20 @@
 <p><code>scp -r upload 114.114.114.114:~/download</code> 将本地文件夹<code>upload</code>传输到<code>114.114.114.114</code>的<code>~/download</code>文件夹  </p>
 <h3 id="ssh">复制远程服务器文件到本地(远程需要开SSH服务)</h3>
 <p><code>scp 114.114.114.114:~/upload/note.md ~/download</code> 将远程<code>114.114.114.114</code>的<code>node.md</code>下载到本地的<code>~/download</code>目录  </p>
-<h1 id="_23">其它</h1>
+<h2 id="crontab">crontab</h2>
+<p>执行定时任务，可以以固定的时间间隔执行一些命令或者脚本文件。具体用法： crontab [提前写好的定时文件]</p>
+<h2 id="_23">参数</h2>
+<ul>
+<li>-l 查看设置的定时任务</li>
+<li>-r 删除设置的定时任务</li>
+<li>-e 编辑设置的定时任务</li>
+</ul>
+<h2 id="_24">定时任务文件格式</h2>
+<p><code>* * * * * command</code> <br />
+<code>分钟 小时 天 星期 月 具体命令</code>。 </p>
+<h2 id="_25">常用</h2>
+<p><code>* * * * * command</code> 每分钟执行一次命令</p>
+<h1 id="_26">其它</h1>
 <ul>
 <li>cd 切换目录</li>
 <li>ls 列出目录中的文件</li>
@@ -262,7 +275,7 @@
 <li>chmod 修改文件/文件夹权限 <code>ugo rwx=421</code>。 一般加 <code>-R</code> 递归修改</li>
 <li>kill 杀死进程。 一般加-9杀死某进程相关进程</li>
 </ul>
-<h1 id="_24">参考</h1>
+<h1 id="_27">参考</h1>
 <ul>
 <li><a href="https://www.geeksforgeeks.org/linux-commands/">https://www.geeksforgeeks.org/linux-commands/</a></li>
 <li><a href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html">https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html</a></li>
@@ -272,11 +285,7 @@
       <span>
         <p>Copyright © 2019 JinShuai.
         Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
-<<<<<<< HEAD
-        <p>Site Generated 2019-05-03 10:42:17</p>
-=======
-        <p>Site Generated 2019-04-19 09:27:27</p>
->>>>>>> ed69d1d4e436305c76a96251b512142cde27e722
+        <p>Site Generated 2019-07-26 17:48:39</p>
       </span>
     </div>
 
