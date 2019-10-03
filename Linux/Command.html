@@ -161,9 +161,17 @@
 <code>top -Hp 20348</code> 监控进程号为<code>20348</code>的进程内部的线程状态</li>
 <li>-d seconds 每seconds秒刷新一次</li>
 </ul>
+<h2 id="du">du</h2>
+<p>查看某个目录中所有文件大小。 比如 <code>du js -h</code> 查看js目录中文件占用空间大小。</p>
+<h3 id="_13">参数</h3>
+<ul>
+<li>-c 最后列出这个目录的总大小</li>
+<li>-h 可读性更好一些</li>
+<li>-s 只输出当前目录的大小，不会递归输出子目录的大小。</li>
+</ul>
 <h2 id="lsoflist-open-files">lsof(list open files)</h2>
 <p>查看打开的文件，比如 <code>lsof -p 23478</code> 查看进程号为<code>23478</code>打开的文件</p>
-<h3 id="_13">参数</h3>
+<h3 id="_14">参数</h3>
 <ul>
 <li>-i [46][protocol][@hostname|hostaddr][:service|port] 列出具有指定网络地址的文件(网络地址包括网络层协议版本IPV6/4、运输层协议类型TCP/UDP、主机名、端口号。这几个是可选的，如果不写就默认所有)<br />
 <code>lsof -i :80</code> 列出网络地址中网络层是IPV6或IPV4并且运输层是TCP或UDP并且主机名是任意的，<strong>但是占用的端口号是80的文件</strong>。 意思就是查看占用80端口的进程。</li>
@@ -178,7 +186,7 @@
 </ul>
 <h2 id="free">free</h2>
 <p>查看内存及交换区使用情况 比如 <code>free -b</code> 以字节的形式显示内存使用情况</p>
-<h3 id="_14">参数</h3>
+<h3 id="_15">参数</h3>
 <ul>
 <li>-b 以字节(B)形式显示</li>
 <li>-k 以千字节(KB)形式显示 </li>
@@ -186,18 +194,18 @@
 <li>-g 以吉字节(GB)形式显示</li>
 </ul>
 <h2 id="sar">sar</h2>
-<p>监控CPU使用率、内存使用率、磁盘IO情况、网卡工作情况 比如 <code>sar -b 1 2</code> 查看磁盘IO情况，每一秒显示一次，共显示两次。</p>
-<h3 id="_15">参数</h3>
+<p>监控CPU使用率、内存使用率、磁盘IO情况、网卡工作情况 比如 <code>sar -b 1 2</code> 查看磁盘IO情况，每一秒显示一次，共显示两次。(需要开启系统监控: 修改<code>/etc/default/sysstat</code>中的<code>ENABLED=true</code>)</p>
+<h3 id="_16">参数</h3>
 <ul>
 <li>-q 查看运行队列中进程数量、进程总数量、系统平均负载(单位时间内(等待队列中进程数量+运行队列中进程数量) / CPU最高能处理的进程数量)。单核负载=负载/CPU总核数。每个核的负载在0.7左右比较正常。</li>
 <li>-u 查看CPU的使用率</li>
 <li>-r 内存使用情况</li>
 </ul>
-<h1 id="_16">网络工具</h1>
+<h1 id="_17">网络工具</h1>
 <p>查看网络信息，比如查看处于不同连接状态(运输层是TCP/UDP、已经建立或者正在监听)的连接。发送网络请求</p>
 <h2 id="netstat">netstat</h2>
 <p>查看网络连接状态信息。比如 <code>netstat -t</code> 查看已经建立的TCP连接信息</p>
-<h3 id="_17">参数</h3>
+<h3 id="_18">参数</h3>
 <ul>
 <li>-a 查看所有状态的连接(已经建立、正在监听)</li>
 <li>-t 查看已经建立的TCP连接信息</li>
@@ -214,7 +222,7 @@
 </ul>
 <h2 id="curl">curl</h2>
 <p>重点是模拟发送网络请求(HTTP、FTP、SCP、POP3、SMTP...)，不是下载数据。 默认重定向到标准输出。</p>
-<h3 id="_18">参数</h3>
+<h3 id="_19">参数</h3>
 <ul>
 <li>-o/O 指定保存的文件名/使用请求的文件的文件名<br />
 <code>curl -o test.html jinshuai86.github.io/wiki/Linux/Command.html</code> 将<code>Command.html</code>中的内容保存到<code>test.html</code>中<br />
@@ -230,7 +238,7 @@
 </ul>
 <h2 id="wget">wget</h2>
 <p>下载数据，相对<code>curl</code>，<code>wget</code>支持递归下载</p>
-<h3 id="_19">参数</h3>
+<h3 id="_20">参数</h3>
 <ul>
 <li>-r 进行递归下载，将当前页面内包含的其它链接内容也一并下载下来</li>
 <li>--reject=filetype,filetype 不下载执行类型的文件。多个类型用<code>,</code>隔开。 比如<code>wget --reject=css,js jinshuai86.github.io/about</code> 不下载<code>css</code>和<code>js</code>类型的文件  </li>
@@ -240,45 +248,63 @@
 <p>远程传输文件，基于<code>SSH</code>协议。<code>scp</code>相对于<code>ftp</code>、<code>rsync</code>，传输速度较快，对系统影响不大。<br />
 比如 <code>scp localfile remoteIP:folder</code> 将<strong>本地文件</strong><code>localfile</code>传输到IP地址为<code>remoteIP</code>的<code>foler</code>文件夹中<br />
 <code>Windows</code>下有图形界面的<code>winscp</code>工具支持<code>scp</code></p>
-<h2 id="_20">参数</h2>
+<h2 id="_21">参数</h2>
 <ul>
 <li>-r 递归传输整个目录</li>
 </ul>
-<h2 id="_21">常用</h2>
-<h3 id="_22">上传本地文件到远程服务器</h3>
+<h2 id="_22">常用</h2>
+<h3 id="_23">上传本地文件到远程服务器</h3>
 <p><code>scp -r upload 114.114.114.114:~/download</code> 将本地文件夹<code>upload</code>传输到<code>114.114.114.114</code>的<code>~/download</code>文件夹  </p>
 <h3 id="ssh">复制远程服务器文件到本地(远程需要开SSH服务)</h3>
 <p><code>scp 114.114.114.114:~/upload/note.md ~/download</code> 将远程<code>114.114.114.114</code>的<code>node.md</code>下载到本地的<code>~/download</code>目录  </p>
+<h2 id="nmap">nmap</h2>
+<p>扫描服务器端口信息， 比如 <code>nmap ip -p port</code> 查看指定IP的指定端口打开状态 或者 <code>nmap ip</code> 查看指定ip机器打开的全部端口 </p>
 <h2 id="crontab">crontab</h2>
 <p>执行定时任务，可以以固定的时间间隔执行一些命令或者脚本文件。具体用法： crontab [提前写好的定时文件]</p>
-<h2 id="_23">参数</h2>
+<h2 id="_24">参数</h2>
 <ul>
 <li>-l 查看设置的定时任务</li>
 <li>-r 删除设置的定时任务</li>
 <li>-e 编辑设置的定时任务</li>
 </ul>
-<h2 id="_24">定时任务文件格式</h2>
+<h2 id="_25">定时任务文件格式</h2>
 <p><code>* * * * * command</code> <br />
 <code>分钟 小时 天 星期 月 具体命令</code>。 </p>
-<h2 id="_25">常用</h2>
+<h2 id="_26">常用</h2>
 <p><code>* * * * * command</code> 每分钟执行一次命令</p>
-<h1 id="_26">其它</h1>
+<h1 id="_27">其它</h1>
+<h2 id="ls">ls</h2>
+<p>浏览目录 </p>
+<h3 id="_28">参数</h3>
+<ul>
+<li>-F 会在末尾加 <strong>/</strong> 标志是文件还是目录  </li>
+<li>-R 递归打印每个目录  </li>
+<li>通过 *、?、[a-i]、[!a] 实现过滤器。 比如<code>ls -l da[!t]a</code>列出第三个字符不是<code>t</code>的目录中的内容  </li>
+<li>-i 查看文件的inode编号  </li>
+</ul>
+<h2 id="cp">cp</h2>
+<p>拷贝文件</p>
+<h3 id="_29">参数</h3>
+<ul>
+<li>-i 在拷贝的时候会判断新目录中是否已经存在同名文件，如果存在会询问。否则就会覆盖文件内容。比如 <code>cp -i test.md /home/js/</code> 如果<code>/homg/js/</code> 里面已经有<code>test.md</code>，就会提示。 <code>mv</code>/<code>rm</code>命令同理  </li>
+<li>注意: 当将文件拷贝到一个不存在的目录时，如果在最后加上 <code>/</code>。 比如 <code>cp test.md /home/sj</code> 如果<code>sj</code>不存在并且后面还没有<code>/</code> 就会创建<code>sj</code>文件，并且将<code>test.md</code>的内容拷贝到<code>sj</code>中。如果在<code>sj</code>后面加上<code>/</code> 如果没有<code>sj</code>目录，就会提示错误信息，需要对比的是，如果将一个目录递归拷贝到另一个不存在的目录就可以实现。</li>
+</ul>
+<h2 id="todo">TODO</h2>
 <ul>
 <li>cd 切换目录</li>
-<li>ls 列出目录中的文件</li>
-<li>cp 拷贝文件</li>
-<li>mkdir 创建文件夹</li>
+<li>mkdir 创建文件夹。-p创建多级目录</li>
 <li>touch 创建文件</li>
 <li>rm 删除文件/文件夹</li>
 <li>mv 移动文件/文件夹、修改文件名</li>
-<li>less 分页查看文件内容。其它还有cat、tac、</li>
+<li>less 分页查看文件内容。-N显示行号。 其它还有cat、tac、</li>
 <li>head 查看文件首部内容，默认前10行。</li>
 <li>tail 查看文件尾部内容，默认后10行。一般加<code>-f</code>可以实时查看</li>
 <li>chmod 修改文件/文件夹权限 <code>ugo rwx=421</code>。 一般加 <code>-R</code> 递归修改</li>
 <li>kill 杀死进程。 一般加-9杀死某进程相关进程</li>
-<li>alias 为命令创建别名。 比如 alias ll='ls -l' <strong>(注意: 等于号左右不能有空格)</strong></li>
+<li>alias 为命令创建别名。 比如 <code>alias ll='ls -l'</code> <strong>(注意: 等于号左右不能有空格)</strong></li>
+<li>file 查看文件类型</li>
 </ul>
-<h1 id="_27">参考</h1>
+<h1 id="_30">参考</h1>
 <ul>
 <li><a href="https://www.geeksforgeeks.org/linux-commands/">https://www.geeksforgeeks.org/linux-commands/</a></li>
 <li><a href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html">https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html</a></li>
@@ -288,7 +314,7 @@
       <span>
         <p>Copyright © 2019 JinShuai.
         Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
-        <p>Site Generated 2019-07-26 17:52:41</p>
+        <p>Site Generated 2019-10-03 14:59:46</p>
       </span>
     </div>
 
