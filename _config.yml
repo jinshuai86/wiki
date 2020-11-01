@@ -4,3 +4,5 @@ keywords: Java,Operation System,Network,Tool
 description: jinshuai's personal wiki
 author: JinShuai
 root: /wiki/
+deploy:
+    - type: git
