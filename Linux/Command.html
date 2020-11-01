@@ -224,9 +224,15 @@
 <p>重点是模拟发送网络请求(HTTP、FTP、SCP、POP3、SMTP...)，不是下载数据。 默认重定向到标准输出。</p>
 <h3 id="_19">参数</h3>
 <ul>
-<li>-o/O 指定保存的文件名/使用请求的文件的文件名<br />
+<li>
+<p>-H 指定请求头 -X指定请求方法</p>
+<p><code>curl -H 'Content-Type: application/json' -XPOST https://www.baidu.com</code></p>
+</li>
+<li>
+<p>-o/O 指定保存的文件名/使用请求的文件的文件名<br />
 <code>curl -o test.html jinshuai86.github.io/wiki/Linux/Command.html</code> 将<code>Command.html</code>中的内容保存到<code>test.html</code>中<br />
-<code>curl -O jinshuai86.github.io/wiki/Linux/Command.html</code> 将<code>Command.html</code>中的内容保存到本地文件，本地文件的文件名为<code>Command.html</code>。  </li>
+<code>curl -O jinshuai86.github.io/wiki/Linux/Command.html</code> 将<code>Command.html</code>中的内容保存到本地文件，本地文件的文件名为<code>Command.html</code>。  </p>
+</li>
 <li>-L 重定向。比如遇到<code>301</code>、<code>302</code>时，<code>curl</code>默认不会重定向到<code>location header</code>中的<code>URL</code>，加上<code>-L</code>就会重定向到<code>location header</code>中的<code>URL</code>。<br />
 <code>curl jinshuai86.github.io/about</code>请求的内容是<code>301</code>页面，加上<code>-L</code>即可重定向到新的页面。</li>
 <li>-C 对大文件的下载支持断点续传。 注意下载文件要用 <code>-o/O</code>，<code>C</code>和<code>o/O</code>之间有<code>-</code>分隔<br />
@@ -248,34 +254,47 @@
 <p>远程传输文件，基于<code>SSH</code>协议。<code>scp</code>相对于<code>ftp</code>、<code>rsync</code>，传输速度较快，对系统影响不大。<br />
 比如 <code>scp localfile remoteIP:folder</code> 将<strong>本地文件</strong><code>localfile</code>传输到IP地址为<code>remoteIP</code>的<code>foler</code>文件夹中<br />
 <code>Windows</code>下有图形界面的<code>winscp</code>工具支持<code>scp</code></p>
-<h2 id="_21">参数</h2>
+<h3 id="_21">参数</h3>
 <ul>
 <li>-r 递归传输整个目录</li>
 </ul>
-<h2 id="_22">常用</h2>
-<h3 id="_23">上传本地文件到远程服务器</h3>
+<h3 id="_22">常用</h3>
+<h4 id="_23">上传本地文件到远程服务器</h4>
 <p><code>scp -r upload 114.114.114.114:~/download</code> 将本地文件夹<code>upload</code>传输到<code>114.114.114.114</code>的<code>~/download</code>文件夹  </p>
-<h3 id="ssh">复制远程服务器文件到本地(远程需要开SSH服务)</h3>
+<h4 id="ssh">复制远程服务器文件到本地(远程需要开SSH服务)</h4>
 <p><code>scp 114.114.114.114:~/upload/note.md ~/download</code> 将远程<code>114.114.114.114</code>的<code>node.md</code>下载到本地的<code>~/download</code>目录  </p>
 <h2 id="nmap">nmap</h2>
 <p>扫描服务器端口信息， 比如 <code>nmap ip -p port</code> 查看指定IP的指定端口打开状态 或者 <code>nmap ip</code> 查看指定ip机器打开的全部端口 </p>
+<h3 id="_24">参数</h3>
+<ul>
+<li>
+<p>-p 指定端口（默认是TCP）</p>
+<p><code>nmap 114.114.114.114 -p 23</code> 扫描23端口， <code>nmap 114.114.114.114 -p 1-1023</code> 扫描1到1024端口</p>
+</li>
+<li>
+<p>-sU 扫描UDP端口</p>
+</li>
+<li>
+<p>-sV 扫描软件类型，操作系统类型</p>
+</li>
+</ul>
 <h2 id="crontab">crontab</h2>
 <p>执行定时任务，可以以固定的时间间隔执行一些命令或者脚本文件。具体用法： crontab [提前写好的定时文件]</p>
-<h2 id="_24">参数</h2>
+<h2 id="_25">参数</h2>
 <ul>
 <li>-l 查看设置的定时任务</li>
 <li>-r 删除设置的定时任务</li>
 <li>-e 编辑设置的定时任务</li>
 </ul>
-<h2 id="_25">定时任务文件格式</h2>
+<h2 id="_26">定时任务文件格式</h2>
 <p><code>* * * * * command</code> <br />
 <code>分钟 小时 天 星期 月 具体命令</code>。 </p>
-<h2 id="_26">常用</h2>
+<h2 id="_27">常用</h2>
 <p><code>* * * * * command</code> 每分钟执行一次命令</p>
-<h1 id="_27">其它</h1>
+<h1 id="_28">其它</h1>
 <h2 id="ls">ls</h2>
 <p>浏览目录 </p>
-<h3 id="_28">参数</h3>
+<h3 id="_29">参数</h3>
 <ul>
 <li>-F 会在末尾加 <strong>/</strong> 标志是文件还是目录  </li>
 <li>-R 递归打印每个目录  </li>
@@ -284,10 +303,34 @@
 </ul>
 <h2 id="cp">cp</h2>
 <p>拷贝文件</p>
-<h3 id="_29">参数</h3>
+<h3 id="_30">参数</h3>
 <ul>
 <li>-i 在拷贝的时候会判断新目录中是否已经存在同名文件，如果存在会询问。否则就会覆盖文件内容。比如 <code>cp -i test.md /home/js/</code> 如果<code>/homg/js/</code> 里面已经有<code>test.md</code>，就会提示。 <code>mv</code>/<code>rm</code>命令同理  </li>
 <li>注意: 当将文件拷贝到一个不存在的目录时，如果在最后加上 <code>/</code>。 比如 <code>cp test.md /home/sj</code> 如果<code>sj</code>不存在并且后面还没有<code>/</code> 就会创建<code>sj</code>文件，并且将<code>test.md</code>的内容拷贝到<code>sj</code>中。如果在<code>sj</code>后面加上<code>/</code> 如果没有<code>sj</code>目录，就会提示错误信息，需要对比的是，如果将一个目录递归拷贝到另一个不存在的目录就可以实现。</li>
+</ul>
+<h2 id="tar">tar</h2>
+<p>打包、压缩、解压文件</p>
+<h3 id="_31">参数</h3>
+<ul>
+<li>
+<p>-cf 创建(create)：将文件打包</p>
+</li>
+<li>
+<p>-xf ：解包(extract)（打包的逆操作）</p>
+</li>
+<li>
+<p>-z : 在打包/解包的同时，通过gzip进行压缩/解压</p>
+</li>
+<li>
+<p>-tf 或者 --list: 列出(list)这个包中的内容</p>
+</li>
+<li>
+<p>-rf 或者 --append: 往包中追加文件</p>
+</li>
+</ul>
+<h3 id="_32">常用</h3>
+<ul>
+<li>将多个文件打包</li>
 </ul>
 <h2 id="todo">TODO</h2>
 <ul>
@@ -296,7 +339,7 @@
 <li>touch 创建文件</li>
 <li>rm 删除文件/文件夹</li>
 <li>mv 移动文件/文件夹、修改文件名</li>
-<li>less 分页查看文件内容。-N显示行号。 其它还有cat、tac、</li>
+<li>less 分页查看文件内容。-N显示行号。 其它还有cat、tac</li>
 <li>head 查看文件首部内容，默认前10行。</li>
 <li>tail 查看文件尾部内容，默认后10行。一般加<code>-f</code>可以实时查看</li>
 <li>chmod 修改文件/文件夹权限 <code>ugo rwx=421</code>。 一般加 <code>-R</code> 递归修改</li>
@@ -304,7 +347,7 @@
 <li>alias 为命令创建别名。 比如 <code>alias ll='ls -l'</code> <strong>(注意: 等于号左右不能有空格)</strong></li>
 <li>file 查看文件类型</li>
 </ul>
-<h1 id="_30">参考</h1>
+<h1 id="_33">参考</h1>
 <ul>
 <li><a href="https://www.geeksforgeeks.org/linux-commands/">https://www.geeksforgeeks.org/linux-commands/</a></li>
 <li><a href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html">https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html</a></li>
@@ -312,9 +355,9 @@
     </div>
     <div id="footer">
       <span>
-        <p>Copyright © 2019 JinShuai.
+        <p>Copyright © 2020 JinShuai.
         Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
-        <p>Site Generated 2019-10-03 14:59:46</p>
+        <p>Site Generated 2020-11-01 17:28:39</p>
       </span>
     </div>
 
